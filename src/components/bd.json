@@ -1,0 +1,215 @@
+{
+    "tournament" : [
+        {
+            "id" : 1,
+            "name" : "MAJOR VSEX MAJOROV",
+            "prize" : "1 000 000 000$",
+            "game": "CS:GOG",
+            "teams": [
+                {
+                    "id" : 1,
+                    "name": "NAVI",
+                    "logo": ""   
+                },
+                {
+                    "id" : 2,
+                    "name": "G2",
+                    "logo": ""   
+                },
+                {
+                    "id" : 3,
+                    "name": "NIP",
+                    "logo": ""   
+                },
+                {
+                    "id" : 4,
+                    "name": "Astralis",
+                    "logo": ""   
+                },
+                {
+                    "id" : 5,
+                    "name": "Heroic",
+                    "logo": ""   
+                },
+                {
+                    "id" : 6,
+                    "name": "Gambit",
+                    "logo": ""   
+                },
+                {
+                    "id" : 7,
+                    "name": "Team Spirit",
+                    "logo": ""   
+                },
+                {
+                    "id" : 8,
+                    "name": "Complexity",
+                    "logo": ""   
+                },
+                {
+                    "id" : 9,
+                    "name": "Renegades",
+                    "logo": ""   
+                },
+                {
+                    "id" : 10,
+                    "name": "Faze",
+                    "logo": ""   
+                },
+                {
+                    "id" : 11,
+                    "name": "Fnatic",
+                    "logo": ""   
+                },
+                {
+                    "id" : 12,
+                    "name": "BIG",
+                    "logo": ""   
+                },
+                {
+                    "id" : 13,
+                    "name": "Liquid",
+                    "logo": ""   
+                },
+                {
+                    "id" : 14,
+                    "name": "Movistar Riders",
+                    "logo": ""   
+                },
+                {
+                    "id" : 15,
+                    "name": "Cloud9",
+                    "logo": ""   
+                },
+                {
+                    "id" : 16,
+                    "name": "Forze",
+                    "logo": ""   
+                }
+            ],
+            "matches" : [
+                {
+                    "id": 1,
+                    "teams": ["NAVI","G2"],
+                    "stage": 1,
+                    "teamA_score": 14,
+                    "teamB_score": 16,
+                    "winner": 1
+                },
+                {
+                    "id": 2,
+                    "teams": ["NIP","Astralis"],
+                    "stage": 1,
+                    "teamA_score": 16,
+                    "teamB_score": 10,
+                    "winner": 0
+                },
+                {
+                    "id": 3,
+                    "teams": ["Heroic", "Team Spirit"],
+                    "stage": 1,
+                    "teamA_score": 13,
+                    "teamB_score": 16,
+                    "winner": 1
+                },
+                {
+                    "id": 4,
+                    "teams": ["Gambit","Complexity"],
+                    "stage": 1,
+                    "teamA_score": 16,
+                    "teamB_score": 5,
+                    "winner": 0
+                },
+                {
+                    "id": 5,
+                    "teams": ["Renegades", "Fnatic"],
+                    "stage": 1,
+                    "teamA_score": 4,
+                    "teamB_score": 16,
+                    "winner": 1
+                },
+                {
+                    "id": 6,
+                    "teams": ["Faze","BIG"],
+                    "stage": 1,
+                    "teamA_score": 16,
+                    "teamB_score": 8,
+                    "winner": 0
+                },
+                {
+                    "id": 7,
+                    "teams": ["Liquid", "Movistar Riders"],
+                    "stage": 1,
+                    "teamA_score": 10,
+                    "teamB_score": 16,
+                    "winner": 1
+                },
+                {
+                    "id": 8,
+                    "teams": ["Cloud9","Forze"],
+                    "stage": 1,
+                    "teamA_score": 16,
+                    "teamB_score": 9,
+                    "winner": 0
+                },
+                {
+                    "id": 9,
+                    "teams": ["G2","NIP"],
+                    "stage": 2,
+                    "teamA_score": 16,
+                    "teamB_score": 14,
+                    "winner": 0
+                },
+                {
+                    "id": 10,
+                    "teams": ["Team Spirit","Gambit"],
+                    "stage": 2,
+                    "teamA_score": 16,
+                    "teamB_score": 10,
+                    "winner": 0
+                },
+                {
+                    "id": 11,
+                    "teams": ["Fnatic","Faze"],
+                    "stage": 2,
+                    "teamA_score": 10,
+                    "teamB_score": 16,
+                    "winner": 1
+                },
+                {
+                    "id": 12,
+                    "teams": ["Cloud9","Movistar Riders"],
+                    "stage": 2,
+                    "teamA_score": 16,
+                    "teamB_score": 8,
+                    "winner": 0
+                },
+                {
+                    "id": 13,
+                    "teams": ["G2","Team Spirit"],
+                    "stage": 3,
+                    "teamA_score": 16,
+                    "teamB_score": 12,
+                    "winner": 0
+                },
+                {
+                    "id": 14,
+                    "teams": ["Faze","Cloud9"],
+                    "stage": 3,
+                    "teamA_score": 7,
+                    "teamB_score": 16,
+                    "winner": 1
+                },
+                {
+                    "id": 15,
+                    "teams": ["G2","Cloud9"],
+                    "stage": 4,
+                    "teamA_score": 16,
+                    "teamB_score": 13,
+                    "winner": 0
+                }
+            ]
+            
+        }
+    ]
+}
