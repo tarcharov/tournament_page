@@ -40,7 +40,6 @@ const TournamentGrid = ({}) => {
       padding: 10px;
 
     `
-
     const Team = styled.div`
       width: 254px;
       height: 40px;
@@ -49,45 +48,69 @@ const TournamentGrid = ({}) => {
       text-align: center;
       padding: 10px;
     `
-
+    const  Cell = styled.div`
+    display:flex;
+  `
     const MatchWrapper = styled.div`
       display:flex;
       justify-content: center;
       align-items: center;
     `
     const stage = Math.log2(db.tournament[0].teams.length)
-    console.log(stage)
 
     const RoundsLoop = n => {
-      let rounds = []
-        for (let i = 0; i <= n; i++){
-          rounds.push(GenerateStages(i))
+      const rounds = []
+        for (let y = 1; y <= n; y++){
+          // console.log(y)
+          rounds.push(GenerateStages(y))
         }
         return rounds
     }
 
     const GenerateStages = n => {
+      const matchesArr = db.tournament[0].matches.filter(item => item.stage === n)
+      const matches = []
+      
+      for(let i = 0; i<=matchesArr.length; i+=2){
+        // {console.log(matchesArr.length)}
+        matches.push(GenerateCell(matchesArr, i))
+      }
       return(<Round key={n}>
-        {db.tournament[0].matches.filter(item => item.stage === n).map(item => {
-          return (
-          <MatchWrapper>
-            <Match key={item.id}>
-              <TeamWrapper>
-                <Team>{item.teams[0]}</Team>
-                <Score winner={item.winner === 0}>{item.teamA_score}</Score>
-              </TeamWrapper>
-              <TeamWrapper>
-                <Team>{item.teams[1]}</Team>
-                <Score winner={item.winner === 1}>{item.teamB_score}</Score>
-              </TeamWrapper>
-            </Match>
-            <GorizontalLine/>
-            {item.id % 2 ? <VerticalLineDown/> : <VerticalLineUp/>}
-          </MatchWrapper>
-          )
-        })}
+        {matches}
       </Round>)
     }
+
+    const GenerateCell = (arr,i) => {
+      // console.log(arr)
+      // console.log(i)
+        return (
+          <Cell>
+          <MatchWrapper>
+              <Match key={arr[i].id}>
+                <TeamWrapper>
+                  <Team>{arr[i].teams[0]}</Team>
+                  <Score winner={arr[i].winner === 0}>{arr[i].teamA_score}</Score>
+                </TeamWrapper>
+                <TeamWrapper>
+                  <Team>{arr[i].teams[1]}</Team>
+                  <Score winner={arr[i].winner === 1}>{arr[i].teamB_score}</Score>
+                </TeamWrapper>
+              </Match>
+              {i+1 === arr.length-1 ? <Match key={arr[i+1].id}>
+                <TeamWrapper>
+                  <Team>{arr[i+1].teams[0]}</Team>
+                  <Score winner={arr[i+1].winner === 0}>{arr[i+1].teamA_score}</Score>
+                </TeamWrapper>
+                <TeamWrapper>
+                  <Team>{arr[i+1].teams[1]}</Team>
+                  <Score winner={arr[i+1].winner === 1}>{arr[i+1].teamB_score}</Score>
+                </TeamWrapper>
+              </Match> : <></>}
+          </MatchWrapper>
+        </Cell>
+        )
+    }
+
   return (
     <Main>
       <GridWrapper>
