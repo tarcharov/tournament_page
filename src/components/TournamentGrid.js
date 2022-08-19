@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import db from "./bd.json"
-const TournamentGrid = ({}) => {
+const TournamentGrid = () => {
   
     const Main = styled.div`
       display: flex;
@@ -19,16 +19,28 @@ const TournamentGrid = ({}) => {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content:space-around;
       color: white;
       margin: 0px 20px;
     `
     const Match = styled.div`
-    margin: 10px 0px; 
+    margin: ${props => props.margin ?
+      `${props.margin}px 0px`
+     : `0px`};
+     position:relative;
+    :after{
+      content: "";
+      position:absolute;
+      width: 15px;
+      background: white;
+      height: 4px;
+      right: -20px;
+      top: 50%;
+    }
     `
     const TeamWrapper = styled.div`
       display: flex;
-      margin: 10px 0px; 
+      // margin: 10px 0px; 
     `
     const Score = styled.div`
       background-color: ${props => props.winner ? "#025E5F" : "#4C1CF3"};
@@ -41,7 +53,7 @@ const TournamentGrid = ({}) => {
 
     `
     const Team = styled.div`
-      width: 254px;
+      width: 250px;
       height: 40px;
       background-color: #1C0A68;
       border-radius: 5px;
@@ -49,10 +61,20 @@ const TournamentGrid = ({}) => {
       padding: 10px;
     `
     const  Cell = styled.div`
-    display:flex;
+      position:relative;
+      :after{
+        content: "";
+        position: absolute;
+        width: 5px;
+        background: white;
+        height: ${props => `${props.margin*2+80}px`};
+        right: -20px;
+        top:25%;
+      }
   `
     const MatchWrapper = styled.div`
       display:flex;
+      flex-direction:column;
       justify-content: center;
       align-items: center;
     `
@@ -60,9 +82,8 @@ const TournamentGrid = ({}) => {
 
     const RoundsLoop = n => {
       const rounds = []
-        for (let y = 1; y <= n; y++){
-          // console.log(y)
-          rounds.push(GenerateStages(y))
+        for (let i = 1; i <= n; i++){
+          rounds.push(GenerateStages(i))
         }
         return rounds
     }
@@ -71,22 +92,23 @@ const TournamentGrid = ({}) => {
       const matchesArr = db.tournament[0].matches.filter(item => item.stage === n)
       const matches = []
       
-      for(let i = 0; i<=matchesArr.length; i+=2){
-        // {console.log(matchesArr.length)}
-        matches.push(GenerateCell(matchesArr, i))
+      for(let i = 0; i<=matchesArr.length-1; i+=2){
+        matches.push(GenerateCell(matchesArr, i, n))
       }
       return(<Round key={n}>
         {matches}
       </Round>)
     }
 
-    const GenerateCell = (arr,i) => {
-      // console.log(arr)
-      // console.log(i)
+    const GenerateCell = (arr,i, n) => {
+      let margin = 0;
+      for(let i=0; i<n;i++){
+        margin+=i*50;
+      }
         return (
-          <Cell>
+          <Cell margin={margin}>
           <MatchWrapper>
-              <Match key={arr[i].id}>
+              <Match key={arr[i].id} margin={margin}>
                 <TeamWrapper>
                   <Team>{arr[i].teams[0]}</Team>
                   <Score winner={arr[i].winner === 0}>{arr[i].teamA_score}</Score>
@@ -96,7 +118,7 @@ const TournamentGrid = ({}) => {
                   <Score winner={arr[i].winner === 1}>{arr[i].teamB_score}</Score>
                 </TeamWrapper>
               </Match>
-              {i+1 === arr.length-1 ? <Match key={arr[i+1].id}>
+              {i+1 <= arr.length-1 ? <Match key={arr[i+1].id}  margin={margin}>
                 <TeamWrapper>
                   <Team>{arr[i+1].teams[0]}</Team>
                   <Score winner={arr[i+1].winner === 0}>{arr[i+1].teamA_score}</Score>
